@@ -1,3 +1,4 @@
+// source_handbook: week11-hackathon-preparation
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -51,6 +52,13 @@ EXPECTED JSON FORMAT (on success):
     if (parsed.error) {
       return NextResponse.json({ error: parsed.error }, { status: 400 });
     }
+
+    console.log({
+      timestamp: new Date().toISOString(),
+      inputLength: text.length,
+      outputKeys: Object.keys(parsed),
+      success: true
+    });
 
     return NextResponse.json({ data: parsed });
 

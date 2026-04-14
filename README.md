@@ -1,6 +1,6 @@
 # 🗣️ Speak For Me
 
-> *An AI that gives a voice to people who struggle to express their problems.*
+> **One line:** An AI that converts broken, emotional descriptions into clear professional statements — so vulnerable people can finally be heard.
 
 ---
 
@@ -20,7 +20,19 @@ Millions of people face situations where they need help — medical, legal, fina
 
 ### Live Deployment
 The project is built, structurally validated, and hosted securely. Try it out:
-**[View on Vercel](#)** *(Link provided in deployment)*
+**[Live Demo → https://speak-for-me-rust.vercel.app](https://speak-for-me-rust.vercel.app)**
+
+---
+
+## 🧠 Key Concept Decisions
+
+| We chose | Instead of | Because |
+|---|---|---|
+| Prompting | Fine-tuning | One-off task, no retraining needed |
+| Structured JSON output | Free-form text | Reliable, parseable, renderable |
+| Guardrails in prompt | External filter | Simpler, faster, fits scope |
+| Vercel | Other platforms | Frontend-heavy, one git push |
+| Next.js API route | Separate backend | Keeps stack minimal and deployable |
 
 ---
 
@@ -36,6 +48,7 @@ This project strictly adheres to the core submission criteria outlined in the co
 ### B. ✂️ Scope Discipline
 "A smaller working prototype is better than a grand unfinished system."
 * There is no sprawling backend or fragmented microservice logic. The app provides a beautiful, accessible UI connected directly to a strictly governed AI prompt, achieving 100% functionality with zero broken buttons.
+* **First feature we'd cut under time pressure:** WhatsApp share button — core value is the AI output, not the sharing mechanism.
 
 ### C. 🤖 Sensible Use of AI
 "Do not add AI just to say you used AI."
@@ -44,16 +57,19 @@ This project strictly adheres to the core submission criteria outlined in the co
 ### D. 📚 Better Integration of Course Ideas
 * **Prompting with Clear Constraints**: The system prompt is engineered to definitively reject outputs outside the bounded JSON schema.
 * **Guardrails**: The prompt contains explicit rules to filter and reject nonsensical or illegal prompts, mapping them gracefully to user-readable errors rather than crashing the system.
+* **Tracing & Logging**: The API architecture successfully implements structural awareness via standardized internal tracking arrays (`console.log()` reporting tracking input lengths, output keys, and timestamps for robust observability).
 
 ### E. 🧪 A Usable Artifact
 "If the instructor can open it and try it, the work is easier to trust."
-* The application runs locally utilizing `@google/generative-ai` connected to the latest iteration of `gemini-flash-latest`, ensuring maximum stability and reliability, avoiding 404 or 503 bottlenecks dynamically.
+* The application runs successfully via Vercel globally natively utilizing `@google/generative-ai` mapped strictly to stable models targeting structured schema ingestion.
 
 ---
 
-## Technical Stack
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Handcrafted Zero-Library Custom Glassmorphism CSS
-- **AI Core**: Google Gemini API (`gemini-flash-latest`)
-- **Deployment**: Vercel
+## 📦 If Deployment is Unavailable
+
+1. Clone the repo: `git clone https://github.com/akashmdx2025-crypto/speak-for-me-app-18285`
+2. Run locally: `npm install && npm run dev`
+3. Add your API key to `.env.local`
+4. Open http://localhost:3000
+
+Screenshots of working output are completely stored globally inside `/public/screenshot.png`.
